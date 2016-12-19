@@ -1,8 +1,8 @@
-=== What is it?
+### What is it?
 
 This is simple e-commerce store was implemented as experiment with SpringBoot. Anyone can extend and use it without any limitations.
 
-=== How to use
+### How to use
 
 Start application: mvn spring-boot:run -P home
 
