@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="col-md-3">
+        <p class="lead">Shop Name</p>
+        <div class="list-group">
+            <a th:href="@{'/category/' + ${category}}" class="list-group-item" th:each="category : ${categories}" th:text="${category}">Category</a>
+        </div>
+        <p class="lead">Cart</p>
+        <table class="table">
+            <tr th:each="item : ${cart.getItems()}">
+                <td th:text="${item.getMovie().getTitle()}"/>
+                <td th:text="${item.getQuantity() + ' &times; ' + curService.convert(item.getMovie().getPrice(), currency)}"/>
+                <td><a th:href="@{'/cart-remove/' + ${item.getMovie().getId()}}"/>[x]</td>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td th:text="${curService.convert(cart.total(), currency)}"/>
+                <td></td>
+            </tr>
+        </table>
+        <a th:href="@{'/checkout/'}" class="btn btn-primary btn-lg active" role="button">Checkout</a>
+    </div>
+</body>
+</html>
